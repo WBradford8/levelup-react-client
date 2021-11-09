@@ -24,5 +24,5 @@ export const getGameTypes = () => {
             "Authorization": `Token ${localStorage.getItem("lu_token")}`
         }
     })
-        .then()
+        .then(response => response.json())
 }

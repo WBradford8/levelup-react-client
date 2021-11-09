@@ -20,9 +20,12 @@ export const GameForm = () => {
         gameTypeId: 0
     })
 
+
     useEffect(() => {
         getGameTypes()
-        // TODO: Get the game types, then set the state
+        .then((data) => {
+            setGameTypes(data)
+        })
     }, [])
 
     /*
@@ -54,6 +57,11 @@ export const GameForm = () => {
                         value={currentGame.title}
                         onChange={changeGameState}
                     />
+                    <label htmlFor="maker">Game Creator: </label>
+                    <input type="text" name="maker" required autoFocus className="form-control"
+                        value={currentGame.maker}
+                        onChange={changeGameState}
+                    />
                     <label htmlFor="numberOfPlayers">Number of Players: </label>
                     <input type="text" name="numberOfPlayers" required autoFocus className="form-control"
                         value={currentGame.numberOfPlayers}
@@ -64,8 +72,8 @@ export const GameForm = () => {
                         value={currentGame.skillLevel}
                         onChange={changeGameState}
                     />
-                    <label htmlFor="gameType">Game Type: </label>
-                    <select value={currentGame.gameTypeId} onChange={changeGameState}>
+                    <label htmlFor="gameTypes">Game Type: </label>
+                    <select  name="gameTypeId" onChange={changeGameState}>
                         {gameTypes.map(currentGame => (
                             <option value={currentGame.id}>{currentGame.label}</option>
                         ))}
@@ -95,4 +103,4 @@ export const GameForm = () => {
                 className="btn btn-primary">Create</button>
         </form>
     )
-}
+ }
