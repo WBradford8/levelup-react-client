@@ -8,7 +8,7 @@ export const getEvents = () => {
 }
 
 export const createEvent = (event) => {
-    return fetch("http://localhost:8000/games", {
+    return fetch("http://localhost:8000/events", {
         method: "POST",
         headers: {
             "Authorization": `Token ${localStorage.getItem("lu_token")}`,
